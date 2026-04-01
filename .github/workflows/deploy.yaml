@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,8 +16,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: build image
+    - name: Build image
       run: docker build -t adnan23bcs35/node-app .
 
-    - name: docker push
+    - name: Docker push
       run: docker push adnan23bcs35/node-app
