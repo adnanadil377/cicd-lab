@@ -1,0 +1,20 @@
+name: node CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: build image
+      run: docker build -t adnan23bcs35/node-app .
+
+    - name: docker push
+      run: docker push adnan23bcs35/node-app
